@@ -51,6 +51,8 @@ app.set('view engine', 'ejs');
 // 정적파일 폴더지정
 app.use(express.static('public'));
 
+app.get('/favicon.ico', (req,res)=> res.writeHead(404));
+
 const port = 3000;
 app.listen(port, ()=>{
     console.log('connected to 3000')
