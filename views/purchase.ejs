@@ -1,0 +1,30 @@
+<!-- 필요한 변수 : products, status -->
+<% var i = 0;
+    if(products.length==0) { %>
+        <div>구매한 상품 없음</div>
+    <% } else { %>
+        <table class="table table-bordered " style="text-align: center;">
+            <thead class="table-primary "><th>상품</th><th>상품명</th><th>단가</th><th>구매량</th><th>총금액</th><th>구매일</th><th>취소여부</th>
+            </thead>
+    <% while( i < products.length) { %>
+            
+    <tr><td><a href="/detail/<%= products[i].mer_id%>" style="text-decoration: none;"><img src="<%= products[i].image %>" style="width:100px;height:100px; "></a></td>
+        <td><%= products[i].name %></td>
+        <td><%= products[i].price %></td>
+        <td><%= products[i].qty %></td>
+        <td><%= products[i].total %></td>
+        <td><%= products[i].date %></td>
+        <% if(products[i].cancel == 'N') { %>
+        <td><a href="/purchase/cancel/<%= products[i].mer_id %>">구매취소</a></td>
+        <% } else { %>
+        <td>취소된 상품</td>
+        <% }%>        
+    </tr>
+<% i++;} %> 
+
+</table>
+<% }%>
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

@@ -1,0 +1,35 @@
+<div class="container">	
+	
+
+    <h2><%= selectedbt[0].title %> 수정</h2>
+	<form action="/board/update_process" method="post" >
+        <input type = "hidden" name="type_id" value = "<%= selectedb[0].type_id %>">
+        <input type = "hidden" name="loginid" value = "<%= selectedb[0].loginid%>">
+        <input type = "hidden" name="board_id" value = "<%= selectedb[0].board_id%>">
+        <input type = "hidden" name="pNum" value = "<%= pNum %>">
+		<div class="mb-3">
+			<label class="form-label" for="id">제목</label> 
+			<input class="form-control" type="text" name="title" value="<%= selectedb[0].title%>" style = "width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">작성자</label> 
+			<input class="form-control" type="text" value = "<%= selectedb[0].name %>" style = "width:300px;" disabled/>
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">내용</label> 
+			<textarea class="form-control" name="content" style = "width:800px;height: 200px;" ><%= selectedb[0].content%></textarea>
+		</div>
+		<% if(cls == 'MNG'){ %>
+			<input class="form-control" type="hidden" name="password" value="<%= selectedb[0].password%>" style = "width:300px;" />
+		<% } else { %>
+        <div class="mb-3">
+			<label class="form-label" for="id">갱신삭제시 비밀번호</label> 
+			<input class="form-control" type="text" name="password" style = "width:300px;" />
+		</div>
+		<% } %>
+        <input type = "hidden" name="originalpw" value = "<%= selectedb[0].password %>">
+        <button class="btn btn-outline-primary btn-sm" type="submit">수정</button>
+		<a href="/board/detail/<%= selectedb[0].board_id %>/<%= pNum %>"><button class="btn btn-outline-primary btn-sm" type="button">내용으로 돌아가기</button></a>
+		
+  </form>
+</div>

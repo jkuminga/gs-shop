@@ -1,0 +1,49 @@
+<div class="container">	
+		<h2>관리자 기능 : 회원생성</h2>
+		<form action="/person/create_process" method="post" >
+			<div class="mb-3">
+				<label class="form-label" for="id">ID</label> 
+				<input class="form-control" type="text" name="loginid" placeholder="아이디를 입력해 주세요" style = "width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">PW</label> 
+				<input class="form-control" type="text" name="password" placeholder="패스워드를 입력해 주세요" style = "width:300px;" />
+			</div>
+			<div class="mb-3" >
+				<label class="form-label" for="id">이름</label> 
+				<input class="form-control" type="text" name="name" placeholder="이름을 입력해 주세요" value="" style = "width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">주소</label> 
+				<input class="form-control" type="text" name="address" placeholder="주소를 입력해 주세요" value="" style = "width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">전화번호</label> 
+				<input class="form-control" type="text" name="tel" placeholder="000-0000-0000" value="" style = "width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">생일</label> 
+				<input class="form-control" type="text" name="birth" placeholder="YYYYMMDD" value="" style = "width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id_main">CLASS </label> 
+				<select name = "class" id = "id_main">
+					<option value="CST">고객</option>
+					<option value="MNG">관리자</option>
+					<option value="CEO">경영자</option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id_main">GRADE </label> 
+				<select name = "grade" id = "id_main">
+					<option value="S">실버(가장 낮은 등급)</option>
+					<option value="G">골드(중간 등급)</option>
+					<option value="D">다이아몬드(가장높은 등급)</option>
+				</select>
+			</div>
+			
+			<button class="btn btn-outline-primary btn-sm" type="submit">입력</button>
+			<a href="/person/view"><button class="btn btn-outline-primary btn-sm" type="button">고객 목록 돌아가기</button></a>
+		</form>	
+</div>
+	

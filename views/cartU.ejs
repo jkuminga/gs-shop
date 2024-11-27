@@ -1,0 +1,49 @@
+<div class="container">	
+    <h2>cart 테이블 수정</h2>
+	<form action="/cart_update_process" method="post">
+        <input type='hidden' name="cart_id" value="<%=cart[0].cart_id%>">
+        
+        <!-- 카테고리 선택상자 -->
+		<div class="mb-3">
+			<label class="form-label" for="pname">고객</label> 
+            <select name = "name" id = "pname">
+                <% var i = 0
+                   var login_id = cart[0].loginid;
+                    while (i < person.length) {
+                        if(person[i].loginid == login_id) { %>
+                            <option value="<%= person[i].loginid %>" selected><%= person[i].name%> </option>
+                        <% } 
+                        else { %>
+                            <option value="<%= person[i].loginid %>"><%= person[i].name %> </option>
+                        <% }%>
+                    <% i++; } %>
+            </select>
+		</div>
+
+        <div class="mb-3">
+			<label class="form-label" for="productname">고객</label> 
+            <select name = "mer_name" id = "productname">
+                <% var i = 0
+                   var mer_id = cart[0].mer_id;
+                   <!-- var mer_name = product.name; -->
+                    while (i < product.length) {
+                        if(product[i].mer_id == mer_id) { %>
+                            <option value="<%= product[i].mer_id %>" selected><%= product[i].name%> </option>
+                        <% } 
+                        else { %>
+                            <option value="<%= product[i].mer_id %>"><%= product[i].name %> </option>
+                        <% }%>
+                    <% i++; } %>
+            </select>
+		</div>
+        
+        <div class="mb-3">
+			<label class="form-label" for="id">날짜</label> 
+			<input class="form-control" type="text" value = "<%= cart[0].date %>" style = "width:300px;" disabled/>
+		</div>
+
+        <button class="btn btn-outline-primary btn-sm" type="submit">수정</button>
+        &nbsp;&nbsp;&nbsp;
+        <a href="/cartview"><button class="btn btn-outline-primary btn-sm" type="button">카트목록 돌아가기</button></a>
+  </form>
+</div>

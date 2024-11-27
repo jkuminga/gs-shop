@@ -1,0 +1,18 @@
+<table class="table table-bordered border-primary table-hover" style="text-align: center;">
+    <thead class="table-primary "><th>loginid</th><th>고객명</th><th>상품id</th><th>상품명</th><th>일자</th><th colspan="2"></th></thead> 
+    <% var i = 0; 
+        while(i < cart.length) { %>
+        <td><%= cart[i].loginid %></td>
+        <td><%= cart[i].name %></td>
+        <td><%= cart[i].mer_id %></td>
+        <td><%= cart[i].mer_name %></td>
+        <td><%= cart[i].date %></td>
+        <td><a href="/cartupdate/<%= cart[i].cart_id %>">수정</a></td>
+        <td><a href="/cartdelete/<%= cart[i].cart_id %>" onclick="if(confirm('정말로 삭제하시겠습니까?')==false) return false">삭제</a></td>
+    </tr>
+    <% i++; } %>
+</table>
+
+<% if (cart.length == 0) { %>
+<p>장바구니에 담긴 상품이 없습니다.</p>
+<% } %>

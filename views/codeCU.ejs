@@ -1,0 +1,74 @@
+<div class="container">	
+	<% if (option == 'create') { %>
+    <h2>코드 입력</h2>
+	<% }
+	else { %>
+	<h2>코드 수정</h2>
+	<% } %>
+
+	<% if (option =='create') { %>
+	<form action="/code/create_process" method="post" >
+	<% } %>
+	<% if (option =='update') { %>
+	<form action="/code/update_process" method="post" >
+	<% }%>
+		<!-- main_id -->
+		<div class="mb-3">
+			<% if(option=='create') {%> 
+			<label class="form-label" for="id">대분류</label>
+			<input class="form-control" type="text" name="main_id"  style = "width:300px;" /><% } %>
+			<% if(option=='update') {%> 
+			<input class="form-control" type="hidden" name="main_id" value="<%=code[0].main_id %>" style = "width:300px;" /> <% } %>
+		</div>
+		<!-- main_name -->
+        <div class="mb-3">
+			<label class="form-label" for="id">대분류명</label> 
+			<% if(option == 'create') { %>
+			<input class="form-control" type="text" name="main_name" style = "width:300px;"/> <% }%>
+			<% if(option == 'update') { %>
+			<input class="form-control" type="text" name="main_name"  value="<%= code[0].main_name %>" style = "width:300px;"/>
+			<% }%>
+		</div>
+		<!-- sub_id -->
+        <div class="mb-3">
+			<% if(option=='create') {%>
+			<label class="form-label" for="id">소분류</label>
+			<input class="form-control" type="text" name="sub_id" style="width:300px;" /> <% } %>
+			<% if(option=='update') {%>
+			<input class="form-control" type="hidden" name="sub_id" value="<%= code[0].sub_id %>" style="width:300px;" /> <% } %>
+		</div>
+		<!-- sub_name -->
+        <div class="mb-3">
+			<label class="form-label" for="id">소분류명</label> 
+			<% if(option == 'create') { %>
+			<input class="form-control" type="text" name="sub_name"  style="width:300px;" /> <% } %>
+			<% if(option == 'update') { %>
+			<input class="form-control" type="text" name="sub_name" value="<%= code[0].sub_name%>" style="width:300px;" /> <% } %>
+		</div>
+		<!-- start -->
+		<div class="mb-3">
+			<% if(option =='create') { %>
+			<label class="form-label" for="id">시작일</label> 
+			<input class="form-control" type="text" name="start" id="start" style="width:300px;" /><% } %>
+			<% if(option =='update') { %>
+			<input class="form-control" type="hidden" name="start" value="<%= code[0].start %>" id="start" style="width:300px;" /><% } %>
+		</div>
+		<!-- end -->
+        <div class="mb-3">
+			<label class="form-label" for="id">종료일</label> 
+			<% if(option == 'create') { %>
+			<input class="form-control" type="text" name="end"  style="width:300px;" /> <% } %> 
+			<% if(option == 'update') { %>
+			<input class="form-control" type="text" name="end" id="end" value="<%= code[0].end %>" style="width:300px;" /> <% } %>
+		</div>
+
+		<!-- button -->
+		<% if(option=='create') {%>
+        <button class="btn btn-outline-primary btn-sm" type="submit">입력</button><% } %>
+		<% if(option=='update') {%>
+		<button class="btn btn-outline-primary btn-sm" type="submit">수정</button><% } %>
+		
+		<!-- back to menu s -->
+		<button class="btn btn-outline-primary btn-sm" type="button" onclick="location.href='/code/view'">제품목록 돌아가기</button>
+
+</div>

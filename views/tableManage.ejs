@@ -1,0 +1,10 @@
+<table class="table table-bordered border-primary table-hover" style="text-align: center;">
+    <thead class="table-primary"><th>테이블 명</th><th>테이블 설명</th></thead>
+    <% var i =0;
+       while(i < metadata.length) { %>
+        <tr>
+            <td><a href="/table/view/<%= metadata[i].TABLE_NAME %>"><%= metadata[i].TABLE_NAME %></a></td>
+            <td><%= metadata[i].TABLE_COMMENT %></td>
+        </tr>
+    <% i++; } %>
+</table>

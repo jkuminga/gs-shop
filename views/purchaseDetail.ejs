@@ -1,0 +1,20 @@
+<!-- /detail/:merId에서 구매 버튼을 눌렀을 때 나오는 화면 -->
+<!-- purchase.js의 purchase와 purchase_process와 cart_process와 연결되어 있음 -->
+<!-- 이 때 qty는 cart에 영향을 주지 않음 -->
+
+<table class="table table-bordered ">
+    <form  method ="post">
+    <tr ><td rowspan = "5"><img src="<%= product.image %>" style="width:300px;height:300px; "></td>
+         <td><%= product.name %></td></tr>
+    <tr> <td>가격 : <%= product.price %> 원</td></tr>
+    <tr> <td>브랜드 : <%= product.brand %></td></tr>
+    <tr> <td>수량 : <input type="number" name="qty"> </td></tr>
+        <input type="hidden" name="loginid" value="<%= loginid %>">
+        <input type="hidden" name="mer_id" value="<%= product.mer_id %>">
+        <input type="hidden" name="price" value=<%= product.price %>">
+            <tr><td><button class="btn btn-outline-primary btn-sm" formaction = "/purchase/purchase_process" type="submit">결제</button>
+                    <button class="btn btn-outline-primary btn-sm" formaction = "/purchase/cart_process" type="submit">장바구니</button>
+            </td></tr>
+
+    </form>   
+</table>

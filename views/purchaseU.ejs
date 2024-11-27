@@ -1,0 +1,125 @@
+<div class="container">	
+    <h2>구매내역 수정</h2>
+	<form action="/purchase_update_process" method="POST">
+        <input type="hidden" name="purchase_id" value="<%= purchase[0].purchase_id %>">
+        
+        <!-- 카테고리 선택상자 -->
+		<div class="mb-3">
+			<label class="form-label" for="pname">고객</label> 
+            <select name = "name" id = "pname">
+                <% var i = 0
+                   var login_id = purchase[0].loginid;
+                    while (i < person.length) {
+                        if(person[i].loginid == login_id) { %>
+                            <option value="<%= person[i].loginid %>" selected><%= person[i].name%> </option>
+                        <% } 
+                        else { %>
+                            <option value="<%= person[i].loginid %>"><%= person[i].name %> </option>
+                        <% }%>
+                    <% i++; } %>
+            </select>
+		</div>
+
+        <div class="mb-3">
+			<label class="form-label" for="productname">고객</label> 
+            <select name = "mer_name" id = "productname">
+                <% var i = 0
+                   var mer_id = purchase[0].mer_id;
+                   <!-- var mer_name = product.name; -->
+                    while (i < product.length) {
+                        if(product[i].mer_id == mer_id) { %>
+                            <option value="<%= product[i].mer_id %>" selected><%= product[i].name%> </option>
+                        <% } 
+                        else { %>
+                            <option value="<%= product[i].mer_id %>"><%= product[i].name %> </option>
+                        <% }%>
+                    <% i++; } %>
+            </select>
+		</div>
+
+        <!-- 테이블 시작 -->
+        <table>
+        <tr><td>
+        <!-- 날짜 -->
+        <div class="mb-3">
+			<label class="form-label" for="date">날짜</label> 
+			<input class="form-control" type="text" name="date" value ="<%= purchase[0].date %>" style = "width:300px;" disabled/>
+		</div>
+        </td>
+        <td width = "30px"></td>
+        <td>
+        <!-- 가격 -->
+        <div class="mb-3">
+			<label class="form-label" for="price">가격</label> 
+			<input class="form-control" type="text" name="price" value="<%= purchase[0].price %>" style="width:300px;" />
+		</div>
+        </td>
+        </tr>
+        <tr><td>
+        <!-- 포인트 -->
+        <div class="mb-3">
+			<label class="form-label" for="point">포인트</label> 
+			<input class="form-control" type="text" name="point" value="<%= purchase[0].point %>" style="width:300px;" />
+		</div></td><td width = "30px"></td><td>
+        <!-- 수량 -->
+        <div class="mb-3">
+			<label class="form-label" for="qty">수량</label> 
+			<input class="form-control" type="text" name="qty" value="<%= purchase[0].qty %>" style="width:300px;" />
+		</div></td>
+        </tr>
+        <tr><td>
+        <!-- 총액 -->
+        <div class="mb-3">
+			<label class="form-label" for="total">총액</label> 
+			<input class="form-control" type="text" name="total" value="<%= purchase[0].total %>" style="width:300px;" />
+		</div></td></tr>
+        <tr><td>
+            <div class="mb-3">
+                <label class="form_label" for="payYN">지불여부</label>
+                <select name="payYN">
+                    <% if(purchase[0].payYN == "Y") {%>
+                        <option value="Y" selected>YES</option>
+                        <option value="N">NO</option>
+                    <% } else { %>
+                        <option value="Y">YES</option>
+                        <option value="N" selected>NO</option>
+                    <% } %>
+                </select>
+            </div>
+        </td></tr>
+
+        <tr><td>
+            <div class="mb-3">
+                <label class="form_label" for="cancel">취소여부</label>
+                <select name="cancel">
+                    <% if(purchase[0].cancel == "Y") {%>
+                        <option value="Y" selected>YES</option>
+                        <option value="N">NO</option>
+                    <% } else { %>
+                        <option value="Y">YES</option>
+                        <option value="N" selected>NO</option>
+                    <% } %>
+                </select>
+            </div>
+        </td></tr> 
+
+        <tr><td>
+            <div class="mb-3">
+                <label class="form_label" for="refund">지불여부</label>
+                <select name="refund">
+                    <% if(purchase[0].refund == "Y") {%>
+                        <option value="Y" selected>YES</option>
+                        <option value="N">NO</option>
+                    <% } else { %>
+                        <option value="Y">YES</option>
+                        <option value="N" selected>NO</option>
+                    <% } %>
+                </select>
+            </div>
+        </td></tr>
+        </table>
+        <!-- 테이블 끝 -->
+        <button class="btn btn-outline-primary btn-sm" type="submit">수정</button>
+        <a href="/purchaseview"><button class="btn btn-outline-primary btn-sm" type="button">구매 목록 돌아가기</button></a>
+  </form>
+</div>

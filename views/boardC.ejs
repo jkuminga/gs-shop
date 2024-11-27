@@ -1,0 +1,26 @@
+<div class="container">
+    <h2><%= selectedbt.title %> 작성</h2>
+	<form action="/board/create_process" method="post" >
+        <input type = "hidden" name="type_id" value = "<%= selectedbt.type_id %>">
+        <input type = "hidden" name="loginid" value = "<%= loginid %>"> 
+        <input type = "hidden" name="p_id" value = 0> 
+		<div class="mb-3">
+			<label class="form-label" for="id">제목</label> 
+			<input class="form-control" type="text" name="title" style = "width:300px;" />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">작성자</label> 
+			<input class="form-control" type="text" value = "<%= who %>" style = "width:300px;" disabled/>
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">내용</label> 
+			<textarea class="form-control" name="content" style = "width:800px;height: 200px;" ></textarea>
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">갱신삭제시 비밀번호</label> 
+			<input class="form-control" type="text" name="password" style = "width:300px;" />
+		</div>
+        <button class="btn btn-outline-primary btn-sm" type="submit">생성</button>
+		<a href="/board/view/<%= selectedbt.type_id%>/1"><button class="btn btn-outline-primary btn-sm" type="button">글 목록으로 돌아가기</button></a>
+  </form>
+</div>

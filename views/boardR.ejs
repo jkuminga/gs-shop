@@ -1,0 +1,37 @@
+<div class="container">	
+	
+
+    <h2><%= selectedbt[0].title %> 작성</h2>
+	<form action="" method="post" >
+        <input type = "hidden" name="type_id" value = "<%= selectedb[0].type_id %>">
+        <input type = "hidden" name="loginid" value = "<%= selectedb[0].loginid %>">
+		<div class="mb-3">
+			<label class="form-label" for="id">제목</label> 
+			<input class="form-control" type="text" name="title" value="<%=selectedb[0].title %>" style = "width:300px;" disabled/>
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">작성자</label> 
+			<input class="form-control" type="text" value = "<%= selectedb[0].name %>" style = "width:300px;" disabled/>
+		</div>
+        <div class="mb-3">  
+			<label class="form-label" for="id">작성일</label> 
+			<input class="form-control" type="text" name="date" value='<%= selectedb[0].date%>' style = "width:300px;" disabled />
+		</div>
+        <div class="mb-3">
+			<label class="form-label" for="id">내용</label> 
+			<textarea class="form-control" name="content" style = "width:800px;height: 200px;" disabled ><%= selectedb[0].content %></textarea>
+		</div>
+        
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="/board/view/<%= selectedb[0].type_id %>/<%= pNum %>"> <button type="button" class="btn btn-info me-md-2">목록</button> </a>
+            
+            <% if( cls=='MNG' ||  who == selectedb[0].name) { %>
+            <a href="/board/update/<%= selectedb[0].board_id %>/<%= selectedb[0].type_id %>/<%= pNum %> "> 
+                <button type="button" class="btn btn-info me-md-2">수정</button> </a>
+            <a href="/board/delete/<%= selectedb[0].board_id %>/<%= selectedb[0].type_id %>/<%= pNum %>" onclick="if(confirm('정말로 삭제하시겠습니까?')==false) return false"> 
+                <button type="button" class="btn btn-info me-md-2">삭제</button> </a>
+            <% } %>
+        </div>
+  </form>
+</div>

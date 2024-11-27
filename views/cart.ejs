@@ -1,0 +1,67 @@
+<!-- 필요한 변수 : products, status -->
+<!-- /detail or /purchase/detail에서 장바구니 버튼을 눌렀을 때 나오는 화면  -->
+<!-- purchase.js의 cart랑 연결됨-->
+<!-- qty는 1로 고정임 -->
+<!-- products:  SELECT * FROM cart c inner join product p on c.mer_id = p.mer_id -->
+
+<!-- form으로 전송하는 데이터: mer_id/ loginid / qty -->
+
+
+<form method="post" id="cartform">
+    <table class="table table-bordered" style="text-align: center;">
+        <thead class="table-primary">
+            <tr>
+                <th>구매선택</th><th>상품</th><th>상품명</th><th>단가</th><th>담은날</th><th>수량</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i = 0; i < products.length; i++) { %>
+                <tr>
+                    <!-- 체크박스 -->
+                    <td>
+                        <input type="checkbox" id="checkbox<%= i %>" name="selectedproduct" value="<%= products[i].mer_id %>" 
+                               onchange="toggleRow('<%= i %>')">
+                    </td>
+                    <!-- 이미지 -->
+                    <td>
+                        <a href="/detail/<%= products[i].mer_id %>" style="text-decoration: none;">
+                            <img src="<%= products[i].image %>" style="width:100px;height:100px;">
+                        </a>
+                    </td>
+                    <!-- 이름 -->
+                    <td><%= products[i].name %></td>
+                    <!-- 가격 -->   
+                    <td><%= products[i].price %></td>
+                    <!-- 날짜 -->
+                    <td><%= products[i].date %></td>
+                    <!-- 수량 -->
+                    <td>
+                        <input type="number" name="qty" value="1" min="1" disabled id="qty<%= i %>">
+                        <input type="hidden" name="loginid" value="<%= loginid %>" disabled id="loginid<%= i %>">
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <% if(products.length==0){%>
+        <div>장바구니에 상품을 추가하세요</div>
+    <% } %>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-outline-primary btn-sm" formaction="/purchase/cart_purchase_process" type="submit">결제</button>
+        <button class="btn btn-outline-primary btn-sm" formaction="/purchase/cart_delete_process" onclick='if(confirm("정말로 삭제하시겠습니까?")==false){return false}' type="submit">삭제</button>
+        <a href="/"><button type="button" class="btn btn-outline-primary btn-sm">상품 목록 돌아가기</button></a>
+    </div>
+</form>
+
+<script>
+    function toggleRow(index) {
+        const isChecked = document.getElementById(`checkbox${index}`).checked;
+        
+        // 체크된 항목만 활성화하고, 체크 해제 시 비활성화
+        document.getElementById(`qty${index}`).disabled = !isChecked;
+        document.getElementById(`loginid${index}`).disabled = !isChecked;
+        document.getElementById(`mer_id${index}`).disabled = !isChecked;
+    }
+</script>

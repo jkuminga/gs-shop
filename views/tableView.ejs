@@ -1,0 +1,33 @@
+<!-- 받아올 변수 : table(선택된 테이블의 메타 데이터) -->
+<!--              tabledata(선택된 테이블의 실제 데이터 )-->
+
+<h2><%= tablename%> 테이블 자료 목록</h2>
+<table class="table table-bordered border-primary table-hover" style="text-align: center;">
+    <thead class="table-primary">
+        <% var i = 1 ;
+           while (i < table.length) { %>
+            <th><%= table[i].COLUMN_COMMENT %></th>
+        <% i++ } %>
+            <th colspan='3'></th>
+    </thead>
+    <tbody>
+        <% var m=0;
+            while(m < tabledata.length) {%>
+                <tr>
+                    <% var n= 1;
+                        while(n < table.length) {
+                            var col_name = table[n].COLUMN_NAME  %>
+                            <td><%= tabledata[m][col_name] %> </td>
+                        <% n++; }%>
+                        <td><a href="#>">생성</a></td>
+                        <td><a href="#">수정</a></td>
+                        <td><a href="#" onclick="if(confirm('정말로 삭제하시겠습니까?')==false) return false">삭제</a></td>
+                </tr>
+        <% m++; } %>
+    </tbody>
+</table>
+<% if(tabledata.length==0 || !tabledata){%>
+    <div>테이블에 자료가 없습니다.</div>
+<%}%>
+
+<a href="/table"><button class="btn btn-outline-primary btn-sm" type="button">테이블 목록으로 돌아가기</button></a>
